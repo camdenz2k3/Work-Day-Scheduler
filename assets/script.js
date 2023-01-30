@@ -1,3 +1,5 @@
+const moment = require("moment/moment");
+
 var currentDay = $("currentDay")
 var schedule = $(".container")
 var timeBlocks = [
@@ -45,4 +47,34 @@ var timeBlocks = [
         hour: 17 
     }
 ];
-var hour
+var hours = Number(moment().format())
+
+currentDay.text(moment().format("dddd, MMMM"));
+
+$(timeBlocks).each(function(index) {
+    
+    var row = $('<div>').addClass('row time-block').appendTo(calendar);
+    
+    $('<div>').addClass('hour').text(timeBlocks[index].time).appendTo(row);
+    
+    var textarea = $('<textarea>').addClass('description').appendTo(row);
+    
+    var savedEvent = localStorage.getItem('event-' + timeBlocks[index].time);
+    textarea.val(savedEvent);
+    
+    if (timeBlocks[index].hour === hours) {
+        $(textarea).addClass('present');
+    } else if (timeBlocks[index].hour < hours) {
+        $(textarea).addClass('past');
+    } else if (timeBlocks[index].hour > hours) {
+        $(textarea).addClass('future');
+    };
+
+
+    var saveBtn = $('<div>').addClass('saveBtn').appendTo(row);
+    $('<i>').addClass('fas fa-save').appendTo(saveBtn);
+    function saveText() {
+        localStorage.setItem('event-' + timeBlocks[index].time, textarea.val());
+    };
+    $(saveBtn).on('click', saveText);
+})
