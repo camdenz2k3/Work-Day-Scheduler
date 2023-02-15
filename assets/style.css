@@ -21,6 +21,10 @@ textarea {
   border-bottom: 10px solid black;
 }
 
+.centertext {
+  text-align: center;
+}
+
 .description {
   white-space: pre-wrap;
 }
@@ -28,6 +32,10 @@ textarea {
 .time-block {
   text-align: center;
   border-radius: 15px;
+}
+
+#saveAlert {
+  text-align: center;
 }
 
 .row {
@@ -44,17 +52,17 @@ textarea {
 
 .past {
   background-color: #d3d3d3;
-  color: white;
+  color: rgb(104, 5, 5);
 }
 
 .present {
   background-color: #ff6961;
-  color: white;
+  color: rgb(8, 141, 225);
 }
 
 .future {
   background-color: #77dd77;
-  color: white;
+  color: rgb(6, 230, 32);
 }
 
 .saveBtn {
@@ -63,6 +71,9 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .saveBtn i:hover {
